@@ -1,0 +1,224 @@
+
+1. Используя команду cat в терминале операционной системы Linux, создать
+два файла Домашние животные (заполнив файл собаками, кошками,
+хомяками) и Вьючные животными заполнив файл Лошадьми, верблюдами и
+ослы), а затем объединить их. Просмотреть содержимое созданного файла.
+Переименовать файл, дав ему новое имя (Друзья человека).
+
+kate@kate-Linux:~$ cat > HomeAnimal
+
+dog Bobik 
+
+dog Rex
+
+cat Vasya
+
+cat Barsik
+
+hamster Homa
+
+hamster Puhlyakate
+
+kate@kate-Linux:~$ cat HomeAnimal
+
+dog Bobik
+
+dog Rex
+
+cat Vasya
+
+cat Barsik
+
+hamster Homa
+
+hamster Puhlya
+
+kate@kate-Linux:~$ cat > PackAnimals
+
+hourse Winter
+
+hourse Belka
+
+camel Gosha
+
+camel Robi
+
+donkey Ia
+
+donkey Kishi
+
+kate@kate-Linux:~$ cat PackAnimals
+
+hourse Winter
+
+hourse Belka
+
+camel Gosha
+
+camel Robi
+
+donkey Ia
+
+donkey Kishi
+
+kate@kate-Linux:~$ cat HomeAnimal PackAnimals > joinFiles
+
+kate@kate-Linux:~$ cat joinFiles
+
+dog Bobik
+
+dog Rex
+
+cat Vasya
+
+cat Barsik
+
+hamster Homa
+
+hamster Puhlya
+
+hourse Winter
+
+hourse Belka
+
+camel Gosha
+
+camel Robi
+
+donkey Ia
+
+donkey Kishi
+
+kate@kate-Linux:~$ mv joinFiles HumanFriends
+
+kate@kate-Linux:~$ cat HumanFriends
+
+dog Bobik
+
+dog Rex
+
+cat Vasya
+
+cat Barsik
+
+hamster Homa
+
+hamster Puhlya
+
+hourse Winter
+
+hourse Belka
+
+camel Gosha
+
+camel Robi
+
+donkey Ia
+
+donkey Kishi
+
+-------------------------------------------------------------------------------
+2. Создать директорию, переместить файл туда.
+kate@kate-Linux:~$ mkdir HumanFriendsDir
+
+kate@kate-Linux:~$ mv HumanFriends HumanFriendsDir/HumanFriends
+
+kate@kate-Linux:~$ ls HumanFriendsDir
+
+HumanFriends
+
+-------------------------------------------------------------------------------
+3. Подключить дополнительный репозиторий MySQL. Установить любой пакет
+из этого репозитория
+
+kate@kate-Linux:~$ sudo su
+
+[sudo] пароль для kate: 
+root@kate-Linux:/home/kate# apt install mysql-server-8.0
+
+Чтение списков пакетов… Готово
+
+Построение дерева зависимостей… Готово
+
+Чтение информации о состоянии… Готово         
+
+Уже установлен пакет mysql-server-8.0 самой новой версии (8.0.34-0ubuntu0.22.04.1).
+
+Обновлено 0 пакетов, установлено 0 новых пакетов, для удаления отмечено 0 пакетов, и 148 пакетов не обновлено.
+-------------------------------------------------------------------------------
+
+4. Установить и удалить deb-пакет с помощью dpkg.
+
+
+kate@kate-Linux:~$ sudo dpkg -i nginx_1.18.0-6ubuntu14.3_amd64.deb
+
+[sudo] пароль для kate:
+
+(Чтение базы данных … на данный момент установлено 196206 файлов и каталогов.)
+
+Подготовка к распаковке nginx_1.18.0-6ubuntu14.3_amd64.deb …
+
+Распаковывается nginx (1.18.0-6ubuntu14.3) на замену (1.18.0-6ubuntu14.4) …
+
+Настраивается пакет nginx (1.18.0-6ubuntu14.3) …
+
+kate@kate-Linux:~$ sudo apt -f install
+
+Чтение списков пакетов… Готово
+
+Построение дерева зависимостей… Готово
+
+Чтение информации о состоянии… Готово         
+
+Обновлено 0 пакетов, установлено 0 новых пакетов, для удаления отмечено 0 пакетов, и 148 пакетов не обновлено.
+
+kate@kate-Linux:~$ dpkg -l | grep nginx
+
+ii  libnginx-mod-http-geoip2                   1.18.0-6ubuntu14.3                      amd64        GeoIP2 HTTP module for Nginx
+
+ii  libnginx-mod-http-image-filter             1.18.0-6ubuntu14.3                      amd64        HTTP image filter module for Nginx
+
+ii  libnginx-mod-http-xslt-filter              1.18.0-6ubuntu14.3                      amd64        XSLT Transformation module for Nginx
+
+ii  libnginx-mod-mail                          1.18.0-6ubuntu14.3                      amd64        Mail module for Nginx
+
+ii  libnginx-mod-stream                        1.18.0-6ubuntu14.3                      amd64        Stream module for Nginx
+
+ii  libnginx-mod-stream-geoip2                 1.18.0-6ubuntu14.3                      amd64        GeoIP2 Stream module for Nginx
+
+ii  nginx                                      1.18.0-6ubuntu14.3                      amd64        small, powerful, scalable web/proxy server
+
+ii  nginx-common                               1.18.0-6ubuntu14.3                      all          small, powerful, scalable web/proxy server - common files
+
+ii  nginx-core                                 1.18.0-6ubuntu14.3                      amd64        nginx web/proxy server (standard version)
+
+kate@kate-Linux:~$ sudo dpkg -r nginx
+
+(Чтение базы данных … на данный момент установлено 196206 файлов и каталогов.)
+
+Удаляется nginx (1.18.0-6ubuntu14.3) …
+
+kate@kate-Linux:~$ dpkg -l | grep nginx
+
+ii  libnginx-mod-http-geoip2                   1.18.0-6ubuntu14.3                      amd64        GeoIP2 HTTP module for Nginx
+
+ii  libnginx-mod-http-image-filter             1.18.0-6ubuntu14.3                      amd64        HTTP image filter module for Nginx
+
+ii  libnginx-mod-http-xslt-filter              1.18.0-6ubuntu14.3                      amd64        XSLT Transformation module for Nginx
+
+ii  libnginx-mod-mail                          1.18.0-6ubuntu14.3                      amd64        Mail module for Nginx
+
+ii  libnginx-mod-stream                        1.18.0-6ubuntu14.3                      amd64        Stream module for Nginx
+
+ii  libnginx-mod-stream-geoip2                 1.18.0-6ubuntu14.3                      amd64        GeoIP2 Stream module for Nginx
+
+ii  nginx-common                               1.18.0-6ubuntu14.3                      all          small, powerful, scalable web/proxy server - common files
+
+ii  nginx-core                                 1.18.0-6ubuntu14.3                      amd64        nginx web/proxy server (standard version)
+
+kate@kate-Linux:~$ 
+
+
+
+
+
